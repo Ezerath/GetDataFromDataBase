@@ -1,6 +1,6 @@
 ﻿namespace GetDataFromDataBase
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.testButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -40,31 +39,29 @@
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Location = new System.Drawing.Point(35, 24);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(945, 312);
+            this.dataGrid.Size = new System.Drawing.Size(524, 312);
             this.dataGrid.TabIndex = 0;
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(986, 24);
+            this.testButton.Location = new System.Drawing.Point(574, 24);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(72, 76);
             this.testButton.TabIndex = 1;
             this.testButton.Text = "Тест\r\n";
             this.testButton.UseVisualStyleBackColor = true;
             // 
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 450);
+            this.ClientSize = new System.Drawing.Size(678, 450);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.dataGrid);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-
             this.ResumeLayout(false);
 
         }
