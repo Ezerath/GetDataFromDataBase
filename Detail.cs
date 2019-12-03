@@ -1,4 +1,6 @@
-﻿namespace GetDataFromDataBase
+﻿using System;
+
+namespace GetDataFromDataBase
 {
     class Detail
     {
@@ -21,7 +23,7 @@
             Name = name;
             Length = length;
             Width = width;
-            Material = material;
+            Material = SetMaterial(material);
             if (edgeB != "0")
             {
                 EdgeB = "128";
@@ -64,6 +66,26 @@
             }
             Count = 1;
         }
+
+        private string SetMaterial(string material)
+        {
+            switch (material)
+            {
+                case "281":
+                    return "NoMaterial";
+                case "314":
+                    return "Хдф";
+                case "492":
+                    return "ДспБелое";
+                case "1590":
+                    return "Smart";
+                case "1581":
+                    return "Agt";
+                default:
+                    return "NoMaterial";
+            }
+        }
+
         public string Show()
         {
             return $"{Length} {Width} {Count} {Name} 1 2 {Material} " +
