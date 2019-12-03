@@ -1,14 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace GetDataFromDataBase
 {
     public partial class MainForm : Form
     {
+        List<Detail> details;
         public MainForm()
         {
             InitializeComponent();
+            details = new List<Detail>();
+            testButton.Click += TestButton_Click;
+        }
+
+        private void TestButton_Click(object sender, EventArgs e)
+        {
+            TestConnection();
+            foreach (var item in details)
+            {
+                if(item.Material=="281")
+                    resultTextBox.Text += item.Show() + "\n";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -16,36 +30,49 @@ namespace GetDataFromDataBase
 
 
 
-        }
-        private void GetDataFromDataGrid()
+        } 
+        private void TestConnection()
         {
-            List<Detail> details = new List<Detail>();
-            for (int i = 0; i < dataGrid.RowCount - 1; i++)
+            //указываем путь к базе данных
+            string connectionAdress = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Program Files (x86)\GeoS\K3-Мебель-ПКМ\Bin\BOutTbl.mdb";
+            // создаем подключение к базе данных
+            OleDbConnection connection = new OleDbConnection(connectionAdress);
+
+            //подключаемся к базе данных
+            ConnectDataBase(connection);
+        }
+
+        private void ConnectDataBase(OleDbConnection connection)
+        {
+            using (connection)
             {
-                string temp = string.Empty;
-                try
-                {
-                    temp = dataGrid.Rows[i].Cells[7].Value.ToString();
-                }
-                catch
-                {
-                    //break;
-                    MessageBox.Show("Error");
-                }
-                if (temp == "17")
-                {
-                    string name = dataGrid.Rows[i].Cells[0].Value.ToString();
-                    string length = dataGrid.Rows[i].Cells[2].Value.ToString();
-                    string width = dataGrid.Rows[i].Cells[3].Value.ToString();
-                    string material = "";
-                    string edgeB = dataGrid.Rows[i].Cells[4].Value.ToString();
-                    string edgeC = dataGrid.Rows[i].Cells[5].Value.ToString();
-                    string edgeD = dataGrid.Rows[i].Cells[6].Value.ToString();
-                    string edgeE = dataGrid.Rows[i].Cells[7].Value.ToString();
-                    details.Add(new Detail(name, length, width, material, edgeB, edgeC, edgeD, edgeE));
-                }
+                //открываем подключение
+                connection.Open();
+                // указываем к каким ячейкам надо обратиться
+                string query = "SELECT NAME, XUNIT, YUNIT, PRICEID, KNBID, KNCID, KNDID, KNEID FROM BOutTbl WHERE GROUPID = 17 ";
+                OleDbCommand command = new OleDbCommand(query, connection);
+                OleDbDataReader reader = command.ExecuteReader();
+                // считываем и заполняем список деталей
+                ReadDataBase(reader);
+                connection.Close();
+                command.Dispose();
             }
-            MessageBox.Show("Done");
+        }
+
+        private void ReadDataBase(OleDbDataReader reader)
+        {
+            while (reader.Read())
+            {
+                string name = reader[0].ToString();
+                string length = reader[1].ToString();
+                string width = reader[2].ToString();
+                string material = reader[3].ToString();
+                string edgeB = reader[4].ToString();
+                string edgeC = reader[5].ToString();
+                string edgeD = reader[6].ToString();
+                string edgeE = reader[7].ToString();
+                details.Add(new Detail(name, length, width, material, edgeB, edgeC, edgeD, edgeE));
+            }
         }
     }
 }

@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGrid = new System.Windows.Forms.DataGridView();
             this.testButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            this.resultListBox = new System.Windows.Forms.ListBox();
+            this.resultTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // dataGrid
-            // 
-            this.dataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(35, 24);
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(524, 312);
-            this.dataGrid.TabIndex = 0;
             // 
             // testButton
             // 
@@ -51,24 +42,39 @@
             this.testButton.Text = "Тест\r\n";
             this.testButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // resultListBox
+            // 
+            this.resultListBox.FormattingEnabled = true;
+            this.resultListBox.Location = new System.Drawing.Point(35, 201);
+            this.resultListBox.Name = "resultListBox";
+            this.resultListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.resultListBox.Size = new System.Drawing.Size(524, 199);
+            this.resultListBox.TabIndex = 2;
+            // 
+            // resultTextBox
+            // 
+            this.resultTextBox.Location = new System.Drawing.Point(35, 24);
+            this.resultTextBox.Name = "resultTextBox";
+            this.resultTextBox.Size = new System.Drawing.Size(524, 171);
+            this.resultTextBox.TabIndex = 4;
+            this.resultTextBox.Text = "";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 450);
+            this.Controls.Add(this.resultTextBox);
+            this.Controls.Add(this.resultListBox);
             this.Controls.Add(this.testButton);
-            this.Controls.Add(this.dataGrid);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "GetData";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gROUPIDDataGridViewTextBoxColumn;
@@ -79,6 +85,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kNCIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kNDIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kNEIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ListBox resultListBox;
+        private System.Windows.Forms.RichTextBox resultTextBox;
     }
 }
 
