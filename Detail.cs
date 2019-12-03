@@ -88,7 +88,10 @@ namespace GetDataFromDataBase
 
         public string Show()
         {
-            return $"{Length} {Width} {Count} {Name} 1 2 {Material} " +
+            // возврат строки в формате для cutting 
+            // длина ширина кол-во имя материал вращение приоритет 
+            // цвет кромки по сторонам тип кромки по сторонам
+            return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
                 $"{EdgeB} {EdgeC} {EdgeD} {EdgeE} {EdgeBcolor} {EdgeCcolor} {EdgeDcolor} {EdgeEcolor}";
         }
     }

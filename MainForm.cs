@@ -20,8 +20,7 @@ namespace GetDataFromDataBase
             TestConnection();
             foreach (var item in details)
             {
-                if(item.Material=="281")
-                    resultTextBox.Text += item.Show() + "\n";
+                resultTextBox.Text += item.Show() + "\n";
             }
         }
 
@@ -30,7 +29,7 @@ namespace GetDataFromDataBase
 
 
 
-        } 
+        }
         private void TestConnection()
         {
             //указываем путь к базе данных
