@@ -13,6 +13,12 @@ namespace GetDataFromDataBase
             InitializeComponent();
             details = new List<Detail>();
             testButton.Click += TestButton_Click;
+            clearButton.Click += ClearButton_Click;
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            resultTextBox.Clear();
         }
 
         private void TestButton_Click(object sender, EventArgs e)

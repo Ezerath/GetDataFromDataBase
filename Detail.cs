@@ -58,7 +58,7 @@
             {
                 EdgeD = "1";
                 if (edgeD == "1582")
-                    EdgeDcolor = "8388736";
+                    EdgeDcolor = "8388736";                
                 else
                     EdgeDcolor = "0";
             }

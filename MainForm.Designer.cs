@@ -30,11 +30,12 @@
         {
             this.testButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(574, 24);
+            this.testButton.Location = new System.Drawing.Point(565, 24);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(72, 76);
             this.testButton.TabIndex = 1;
@@ -49,11 +50,21 @@
             this.resultTextBox.TabIndex = 4;
             this.resultTextBox.Text = "";
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(565, 106);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(72, 76);
+            this.clearButton.TabIndex = 5;
+            this.clearButton.Text = "Очистить";
+            this.clearButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 450);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.testButton);
             this.Name = "MainForm";
@@ -65,6 +76,7 @@
         #endregion
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.RichTextBox resultTextBox;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 
