@@ -24,8 +24,8 @@
             Material = SetMaterial(material);
             if (edgeB != "0")
             {
-                EdgeB = "128";
-                EdgeBcolor = "1";
+                EdgeB = "1";
+                EdgeBcolor = "0";
             }
             else
             {
@@ -34,8 +34,8 @@
             }
             if (edgeC != "0")
             {
-                EdgeC = "128";
-                EdgeCcolor = "1";
+                EdgeC = "1";
+                EdgeCcolor = "0";
             }
             else
             {
@@ -44,8 +44,8 @@
             }
             if (edgeD != "0")
             {
-                EdgeD = "128";
-                EdgeDcolor = "1";
+                EdgeD = "1";
+                EdgeDcolor = "0";
             }
             else
             {
@@ -54,8 +54,8 @@
             }
             if (edgeE != "0")
             {
-                EdgeE = "128";
-                EdgeEcolor = "1";
+                EdgeE = "1";
+                EdgeEcolor = "0";
             }
             else
             {
@@ -90,9 +90,9 @@
             // длина ширина кол-во имя материал вращение приоритет 
             // цвет кромки по сторонам тип кромки по сторонам
             return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
-                $"{EdgeB} {EdgeC} {EdgeD} {EdgeE} {EdgeBcolor} {EdgeCcolor} {EdgeDcolor} {EdgeEcolor}";
+                $" {EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}";
         }
-        public bool Equals(Detail obj)
+        private bool Equals(Detail obj)
         {
             return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
                 EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE &&
@@ -104,6 +104,10 @@
             if (!(obj is Detail))
                 return false;
             return Equals((Detail)obj);
+        }
+        public void AddCount()
+        {
+            Count++;
         }
     }
 }

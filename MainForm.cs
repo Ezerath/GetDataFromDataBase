@@ -34,8 +34,9 @@ namespace GetDataFromDataBase
                 {
                     if (temp.Equals(details[j]))
                     {
-                        details[i].Count++;
-                        details.Remove(details[j]);
+                        details[i].AddCount();
+                        details.RemoveAt(j);
+                        j--;
                     }
                 }
             }
