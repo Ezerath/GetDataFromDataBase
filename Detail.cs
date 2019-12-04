@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GetDataFromDataBase
+﻿namespace GetDataFromDataBase
 {
     class Detail
     {
@@ -17,7 +15,7 @@ namespace GetDataFromDataBase
         string EdgeDcolor;
         string EdgeE;
         string EdgeEcolor;
-        int Count;
+        public int Count { get; set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
             Name = name;
@@ -93,6 +91,19 @@ namespace GetDataFromDataBase
             // цвет кромки по сторонам тип кромки по сторонам
             return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
                 $"{EdgeB} {EdgeC} {EdgeD} {EdgeE} {EdgeBcolor} {EdgeCcolor} {EdgeDcolor} {EdgeEcolor}";
+        }
+        public bool Equals(Detail obj)
+        {
+            return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
+                EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE &&
+                EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
+                EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;                
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Detail))
+                return false;
+            return Equals((Detail)obj);
         }
     }
 }

@@ -17,20 +17,31 @@ namespace GetDataFromDataBase
 
         private void TestButton_Click(object sender, EventArgs e)
         {
-            TestConnection();
+            SetConnection();
+            SumByCount();
             foreach (var item in details)
             {
                 resultTextBox.Text += item.Show() + "\n";
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void SumByCount()
         {
-
-
-
+            for (int i = 0; i < details.Count; i++)
+            {
+                var temp = details[i];
+                for (int j = i + 1; j < details.Count; j++)
+                {
+                    if (temp.Equals(details[j]))
+                    {
+                        details[i].Count++;
+                        details.Remove(details[j]);
+                    }
+                }
+            }
         }
-        private void TestConnection()
+
+        private void SetConnection()
         {
             //указываем путь к базе данных
             string connectionAdress = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Program Files (x86)\GeoS\K3-Мебель-ПКМ\Bin\BOutTbl.mdb";
@@ -38,10 +49,10 @@ namespace GetDataFromDataBase
             OleDbConnection connection = new OleDbConnection(connectionAdress);
 
             //подключаемся к базе данных
-            ConnectDataBase(connection);
+            ConnectToDataBase(connection);
         }
 
-        private void ConnectDataBase(OleDbConnection connection)
+        private void ConnectToDataBase(OleDbConnection connection)
         {
             using (connection)
             {

@@ -58,22 +58,12 @@
             this.Controls.Add(this.testButton);
             this.Name = "MainForm";
             this.Text = "GetData";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button testButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gROUPIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pRICEIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xUNITDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yUNITDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kNBIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kNCIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kNDIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kNEIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.RichTextBox resultTextBox;
     }
 }
