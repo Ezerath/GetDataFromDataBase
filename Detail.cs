@@ -1,6 +1,6 @@
 ﻿namespace GetDataFromDataBase
 {
-    class Detail
+    public class Detail
     {
         string Name { get; set; }//имя детали
         string Length;//длина детали
@@ -15,17 +15,26 @@
         string EdgeDcolor;
         string EdgeE;
         string EdgeEcolor;
-        public int Count { get; set; }
+        public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
             Name = name;
             Length = length;
             Width = width;
             Material = SetMaterial(material);
+            SetEdges(edgeB, edgeC, edgeD, edgeE);
+            Count = 1;
+        }
+
+        private void SetEdges(string edgeB, string edgeC, string edgeD, string edgeE)
+        {
             if (edgeB != "0")
             {
                 EdgeB = "1";
-                EdgeBcolor = "0";
+                if (edgeB == "1582")
+                    EdgeBcolor = "8388736";
+                else
+                    EdgeBcolor = "0";
             }
             else
             {
@@ -35,7 +44,10 @@
             if (edgeC != "0")
             {
                 EdgeC = "1";
-                EdgeCcolor = "0";
+                if (edgeC == "1582")
+                    EdgeCcolor = "8388736";
+                else
+                    EdgeCcolor = "0";
             }
             else
             {
@@ -45,7 +57,10 @@
             if (edgeD != "0")
             {
                 EdgeD = "1";
-                EdgeDcolor = "0";
+                if (edgeD == "1582")
+                    EdgeDcolor = "8388736";
+                else
+                    EdgeDcolor = "0";
             }
             else
             {
@@ -55,14 +70,16 @@
             if (edgeE != "0")
             {
                 EdgeE = "1";
-                EdgeEcolor = "0";
+                if (edgeE == "1582")
+                    EdgeEcolor = "8388736";
+                else
+                    EdgeEcolor = "0";
             }
             else
             {
                 EdgeE = "0";
                 EdgeEcolor = "0";
             }
-            Count = 1;
         }
 
         private string SetMaterial(string material)
@@ -97,7 +114,7 @@
             return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
                 EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE &&
                 EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
-                EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;                
+                EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;
         }
         public override bool Equals(object obj)
         {
