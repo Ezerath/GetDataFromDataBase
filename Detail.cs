@@ -7,14 +7,14 @@
         string Width;// ширина детали
         public string Material { get; set; }// материал детали
         // типы кромок по сторонам детали
-        string EdgeB;
-        string EdgeBcolor;
-        string EdgeC;
-        string EdgeCcolor;
-        string EdgeD;
-        string EdgeDcolor;
-        string EdgeE;
-        string EdgeEcolor;
+        string EdgeB = "0";
+        string EdgeBcolor = "0";
+        string EdgeC = "0";
+        string EdgeCcolor = "0";
+        string EdgeD = "0";
+        string EdgeDcolor = "0";
+        string EdgeE = "0";
+        string EdgeEcolor = "0";
         public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
@@ -30,55 +30,91 @@
         {
             if (edgeB != "0")
             {
-                EdgeB = "1";
-                if (edgeB == "1582")
-                    EdgeBcolor = "8388736";
-                else
-                    EdgeBcolor = "0";
-            }
-            else
-            {
-                EdgeB = "0";
-                EdgeBcolor = "0";
+                SetEdgeB(edgeB);
             }
             if (edgeC != "0")
             {
-                EdgeC = "1";
-                if (edgeC == "1582")
-                    EdgeCcolor = "8388736";
-                else
-                    EdgeCcolor = "0";
-            }
-            else
-            {
-                EdgeC = "0";
-                EdgeCcolor = "0";
+                SetEdgeC(edgeC);
             }
             if (edgeD != "0")
             {
-                EdgeD = "1";
-                if (edgeD == "1582")
-                    EdgeDcolor = "8388736";                
-                else
-                    EdgeDcolor = "0";
-            }
-            else
-            {
-                EdgeD = "0";
-                EdgeDcolor = "0";
+                SetEdgeD(edgeD);
             }
             if (edgeE != "0")
             {
-                EdgeE = "1";
-                if (edgeE == "1582")
-                    EdgeEcolor = "8388736";
-                else
-                    EdgeEcolor = "0";
+                SetEdgeE(edgeE);
             }
-            else
+        }
+
+        private void SetEdgeE(string edgeE)
+        {
+            EdgeE = "1";
+            switch (edgeE)
             {
-                EdgeE = "0";
-                EdgeEcolor = "0";
+                case "1582":
+                    EdgeEcolor = "8388736";
+                    Width = (int.Parse(Width) - 2).ToString();
+                    break;
+                case "1588":
+                    EdgeEcolor = "0";
+                    break;
+                default:
+                    EdgeEcolor = "128";
+                    break;
+            }
+        }
+
+        private void SetEdgeD(string edgeD)
+        {
+            EdgeD = "1";
+            switch (edgeD)
+            {
+                case "1582":
+                    EdgeDcolor = "8388736";
+                    Width = (int.Parse(Width) - 2).ToString();
+                    break;
+                case "1588":
+                    EdgeDcolor = "0";
+                    break;
+                default:
+                    EdgeDcolor = "128";
+                    break;
+            }
+        }
+
+        private void SetEdgeC(string edgeC)
+        {
+            EdgeC = "1";
+            switch (edgeC)
+            {
+                case "1582":
+                    EdgeCcolor = "8388736";
+                    Length = (int.Parse(Length) - 2).ToString();
+                    break;
+                case "1588":
+                    EdgeCcolor = "0";
+                    break;
+                default:
+                    EdgeCcolor = "128";
+                    break;
+            }
+        }
+
+        private void SetEdgeB(string edgeB)
+        {
+            EdgeB = "1";
+            switch (edgeB)
+            {
+                case "1582":
+                    EdgeBcolor = "8388736";
+                    Length = (int.Parse(Length) - 2).ToString();
+                    break;
+                case "1588":
+                    EdgeBcolor = "0";
+                    break;
+                default:
+                    EdgeBcolor = "128";
+                    break;
             }
         }
 
@@ -104,8 +140,10 @@
         public string Show()
         {
             // возврат строки в формате для cutting 
-            // длина ширина кол-во имя материал вращение приоритет 
-            // цвет кромки по сторонам тип кромки по сторонам
+            // (длина ширина кол-во имя материал вращение приоритет 
+            // цвет кромки по сторонам тип кромки по сторонам) 
+            //{ EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}
+            // {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {EdgeC} {EdgeB} {EdgeD} {EdgeE}
             return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
                 $" {EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}";
         }

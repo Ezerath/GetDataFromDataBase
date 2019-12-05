@@ -18,6 +18,7 @@ namespace GetDataFromDataBase
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            details.Clear();
             resultTextBox.Clear();
         }
 
