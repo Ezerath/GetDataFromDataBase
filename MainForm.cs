@@ -14,6 +14,12 @@ namespace GetDataFromDataBase
             details = new List<Detail>();
             testButton.Click += TestButton_Click;
             clearButton.Click += ClearButton_Click;
+            //copyButton.Click += CopyButton_Click;
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(resultTextBox.Text,TextDataFormat.Text);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)

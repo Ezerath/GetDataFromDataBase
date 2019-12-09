@@ -132,6 +132,14 @@
                     return "Smart";
                 case "1581":
                     return "Agt";
+                case "1596":
+                    return "Желтое";
+                case "1597":
+                    return "Зеленое";
+                case "1598":
+                    return "Оранжевое";
+                case "1595":
+                    return "Красное";
                 default:
                     return "NoMaterial";
             }

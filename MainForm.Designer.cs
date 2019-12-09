@@ -31,13 +31,14 @@
             this.testButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
             this.clearButton = new System.Windows.Forms.Button();
+            this.copyButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testButton
             // 
             this.testButton.Location = new System.Drawing.Point(565, 24);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(72, 76);
+            this.testButton.Size = new System.Drawing.Size(82, 76);
             this.testButton.TabIndex = 1;
             this.testButton.Text = "Тест\r\n";
             this.testButton.UseVisualStyleBackColor = true;
@@ -54,16 +55,26 @@
             // 
             this.clearButton.Location = new System.Drawing.Point(565, 106);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(72, 76);
+            this.clearButton.Size = new System.Drawing.Size(82, 76);
             this.clearButton.TabIndex = 5;
             this.clearButton.Text = "Очистить";
             this.clearButton.UseVisualStyleBackColor = true;
+            // 
+            // copyButton
+            // 
+            this.copyButton.Location = new System.Drawing.Point(565, 188);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(82, 76);
+            this.copyButton.TabIndex = 6;
+            this.copyButton.Text = "Скопировать в буфер";
+            this.copyButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 450);
+            this.Controls.Add(this.copyButton);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.testButton);
@@ -77,6 +88,7 @@
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.RichTextBox resultTextBox;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button copyButton;
     }
 }
 
