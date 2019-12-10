@@ -1,4 +1,6 @@
-﻿namespace GetDataFromDataBase
+﻿using System.Linq;
+
+namespace GetDataFromDataBase
 {
     public class Detail
     {
@@ -18,12 +20,18 @@
         public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
-            Name = name;
+            SetName(name);
             Length = length;
             Width = width;
             Material = SetMaterial(material);
             SetEdges(edgeB, edgeC, edgeD, edgeE);
             Count = 1;
+        }
+
+        private void SetName(string name)
+        {
+            var t = '•';
+            Name = name.Replace(' ', t);
         }
 
         private void SetEdges(string edgeB, string edgeC, string edgeD, string edgeE)
