@@ -151,6 +151,10 @@ namespace GetDataFromDataBase
         {
             return $"{Length}\t{Width}\t{Count}\t1\t{Thinkness}\t{Material}\t{Name}\t{EdgeD}\t{EdgeE}\t{EdgeC}\t{EdgeB}";
         }
+        public string ShowCuttingShort()
+        {
+            return $"{Length} {Width} {Count} {Name} {Material}";
+        }
         //public string Show()
         //{
         //    // возврат строки в формате для cutting 

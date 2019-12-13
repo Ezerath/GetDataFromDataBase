@@ -13,9 +13,20 @@ namespace GetDataFromDataBase
         {
             InitializeComponent();
             details = new List<Detail>();
-            testButton.Click += TestButton_Click;
+            //testButton.Click += TestButton_Click;
+            testButton.Click += ToCuttingShort;
             clearButton.Click += ClearButton_Click;
             //copyButton.Click += CopyButton_Click;
+        }
+
+        private void ToCuttingShort(object sender, EventArgs e)
+        {
+            SetConnection();
+            SumByCount();
+            foreach (var item in details)
+            {
+                resultTextBox.Text += item.ShowCuttingShort()+"\n";
+            }
         }
 
         private void CopyButton_Click(object sender, EventArgs e)
