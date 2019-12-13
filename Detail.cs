@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace GetDataFromDataBase
+﻿namespace GetDataFromDataBase
 {
     public class Detail
     {
@@ -17,18 +15,17 @@ namespace GetDataFromDataBase
         public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
-            Name = name;
+            SetName(name);
             Length = length;
             Width = width;
-            Material = SetMaterial(material);
+            Material = SetMaterialShort(material);
             SetEdges(edgeB, edgeC, edgeD, edgeE);
             Count = 1;
         }
 
         private void SetName(string name)
         {
-            var t = '•';
-            Name = name.Replace(' ', t);
+            Name = name.Replace(' ', '•');
         }
 
         private void SetEdges(string edgeB, string edgeC, string edgeD, string edgeE)
@@ -86,7 +83,7 @@ namespace GetDataFromDataBase
         }
 
         private void SetEdgeC(string edgeC)
-        {            
+        {
             switch (edgeC)
             {
                 case "1582":
@@ -118,7 +115,32 @@ namespace GetDataFromDataBase
                     break;
             }
         }
-
+        private string SetMaterialShort(string material)
+        {
+            switch (material)
+            {
+                case "281":
+                    return "Русский" + '•' + "ламинат";
+                case "314":
+                    return "Хдф";
+                case "492":
+                    return "ДспБелое";
+                case "1590":
+                    return "Smart";
+                case "1581":
+                    return "Agt";
+                case "1596":
+                    return "Желтое";
+                case "1597":
+                    return "Зеленое";
+                case "1598":
+                    return "Оранжевое";
+                case "1595":
+                    return "Красное";
+                default:
+                    return "NoMaterial";
+            }
+        }
         private string SetMaterial(string material)
         {
             switch (material)
@@ -170,7 +192,7 @@ namespace GetDataFromDataBase
             return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
                 EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE;
         }
-            //&&
+        //&&
         //        EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
         //        EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;
         //}
