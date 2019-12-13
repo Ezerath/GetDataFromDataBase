@@ -8,6 +8,7 @@ namespace GetDataFromDataBase
     public partial class MainForm : Form
     {
         List<Detail> details;
+        int count = 1;
         public MainForm()
         {
             InitializeComponent();
@@ -19,12 +20,13 @@ namespace GetDataFromDataBase
 
         private void CopyButton_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(resultTextBox.Text,TextDataFormat.Text);
+            //Clipboard.SetText(resultTextBox.Text,TextDataFormat.Text);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
             details.Clear();
+            count = 1;
             resultTextBox.Clear();
         }
 
@@ -34,7 +36,8 @@ namespace GetDataFromDataBase
             SumByCount();
             foreach (var item in details)
             {
-                resultTextBox.Text += item.Show() + "\n";
+                resultTextBox.Text += count + "\t" + item.ShowAstra() + "\n";
+                count++;
             }
         }
 
@@ -73,7 +76,7 @@ namespace GetDataFromDataBase
                 //открываем подключение
                 connection.Open();
                 // указываем к каким ячейкам надо обратиться
-                string query = "SELECT NAME, XUNIT, YUNIT, PRICEID, KNBID, KNCID, KNDID, KNEID FROM BOutTbl WHERE GROUPID = 17 ";
+                string query = "SELECT NAME, XUNIT, YUNIT, PRICEID, KNBID, KNCID, KNDID, KNEID FROM BOutTbl WHERE GROUPID = 17 OR GROUPID = 38 ";
                 OleDbCommand command = new OleDbCommand(query, connection);
                 OleDbDataReader reader = command.ExecuteReader();
                 // считываем и заполняем список деталей

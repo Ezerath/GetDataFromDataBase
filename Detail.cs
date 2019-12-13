@@ -9,18 +9,15 @@ namespace GetDataFromDataBase
         string Width;// ширина детали
         public string Material { get; set; }// материал детали
         // типы кромок по сторонам детали
-        string EdgeB = "0";
-        string EdgeBcolor = "0";
-        string EdgeC = "0";
-        string EdgeCcolor = "0";
-        string EdgeD = "0";
-        string EdgeDcolor = "0";
-        string EdgeE = "0";
-        string EdgeEcolor = "0";
+        string EdgeB = string.Empty;
+        string EdgeC = string.Empty;
+        string EdgeD = string.Empty;
+        string EdgeE = string.Empty;
+        string Thinkness = string.Empty;
         public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
-            SetName(name);
+            Name = name;
             Length = length;
             Width = width;
             Material = SetMaterial(material);
@@ -56,72 +53,68 @@ namespace GetDataFromDataBase
 
         private void SetEdgeE(string edgeE)
         {
-            EdgeE = "1";
             switch (edgeE)
             {
                 case "1582":
-                    EdgeEcolor = "8388736";
+                    EdgeE = "2мм";
                     Width = (int.Parse(Width) - 2).ToString();
                     break;
                 case "1588":
-                    EdgeEcolor = "0";
+                    EdgeE = "1мм";
                     break;
                 default:
-                    EdgeEcolor = "128";
+                    EdgeE = "0,4мм";
                     break;
             }
         }
 
         private void SetEdgeD(string edgeD)
         {
-            EdgeD = "1";
             switch (edgeD)
             {
                 case "1582":
-                    EdgeDcolor = "8388736";
+                    EdgeD = "2мм";
                     Width = (int.Parse(Width) - 2).ToString();
                     break;
                 case "1588":
-                    EdgeDcolor = "0";
+                    EdgeD = "1мм";
                     break;
                 default:
-                    EdgeDcolor = "128";
+                    EdgeD = "0,4мм";
                     break;
             }
         }
 
         private void SetEdgeC(string edgeC)
-        {
-            EdgeC = "1";
+        {            
             switch (edgeC)
             {
                 case "1582":
-                    EdgeCcolor = "8388736";
+                    EdgeC = "2мм";
                     Length = (int.Parse(Length) - 2).ToString();
                     break;
                 case "1588":
-                    EdgeCcolor = "0";
+                    EdgeC = "1мм";
                     break;
                 default:
-                    EdgeCcolor = "128";
+                    EdgeC = "0,4мм";
                     break;
             }
         }
 
         private void SetEdgeB(string edgeB)
         {
-            EdgeB = "1";
             switch (edgeB)
             {
                 case "1582":
-                    EdgeBcolor = "8388736";
+                    EdgeB = "2мм";
                     Length = (int.Parse(Length) - 2).ToString();
                     break;
                 case "1588":
-                    EdgeBcolor = "0";
+                    EdgeB = "1мм";
                     break;
                 default:
-                    EdgeBcolor = "128";
+                    EdgeB = "0,4мм";
                     break;
             }
         }
@@ -131,9 +124,11 @@ namespace GetDataFromDataBase
             switch (material)
             {
                 case "281":
-                    return "NoMaterial";
+                    Thinkness = "16";
+                    return "ДСП 16";
                 case "314":
-                    return "Хдф";
+                    Thinkness = "4";
+                    return "ХДФ белое";
                 case "492":
                     return "ДспБелое";
                 case "1590":
@@ -152,24 +147,29 @@ namespace GetDataFromDataBase
                     return "NoMaterial";
             }
         }
-
-        public string Show()
+        public string ShowAstra()
         {
-            // возврат строки в формате для cutting 
-            // (длина ширина кол-во имя материал вращение приоритет 
-            // цвет кромки по сторонам тип кромки по сторонам) 
-            //{ EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}
-            // {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {EdgeC} {EdgeB} {EdgeD} {EdgeE}
-            return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
-                $" {EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}";
+            return $"{Length}\t{Width}\t{Count}\t1\t{Thinkness}\t{Material}\t{Name}\t{EdgeD}\t{EdgeE}\t{EdgeC}\t{EdgeB}";
         }
+        //public string Show()
+        //{
+        //    // возврат строки в формате для cutting 
+        //    // (длина ширина кол-во имя материал вращение приоритет 
+        //    // цвет кромки по сторонам тип кромки по сторонам) 
+        //    //{ EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}
+        //    // {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {EdgeC} {EdgeB} {EdgeD} {EdgeE}
+        //    return $"{Length} {Width} {Count} {Name} {Material} 1 2 " +
+        //        $" {EdgeDcolor} {EdgeEcolor} {EdgeBcolor} {EdgeCcolor} {EdgeD} {EdgeE} {EdgeB} {EdgeC}";
+        //}
         private bool Equals(Detail obj)
         {
             return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
-                EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE &&
-                EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
-                EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;
+                EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE;
         }
+            //&&
+        //        EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
+        //        EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;
+        //}
         public override bool Equals(object obj)
         {
             if (!(obj is Detail))
