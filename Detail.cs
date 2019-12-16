@@ -1,6 +1,8 @@
-﻿namespace GetDataFromDataBase
+﻿using System;
+
+namespace GetDataFromDataBase
 {
-    public class Detail
+    public class Detail : IComparable<Detail>
     {
         string Name { get; set; }//имя детали
         string Length;//длина детали
@@ -205,6 +207,11 @@
         public void AddCount()
         {
             Count++;
+        }
+
+        public int CompareTo(Detail det)
+        {
+            return Material.CompareTo(det.Material);
         }
     }
 }

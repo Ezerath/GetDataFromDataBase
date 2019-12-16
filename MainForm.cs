@@ -23,6 +23,7 @@ namespace GetDataFromDataBase
         {
             SetConnection();
             SumByCount();
+            details.Sort();
             foreach (var item in details)
             {
                 resultTextBox.Text += item.ShowCuttingShort()+"\n";
