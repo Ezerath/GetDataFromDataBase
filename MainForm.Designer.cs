@@ -30,36 +30,27 @@
         {
             this.testButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
-            this.clearButton = new System.Windows.Forms.Button();
             this.copyButton = new System.Windows.Forms.Button();
+            this.edgeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(690, 24);
+            this.testButton.Location = new System.Drawing.Point(126, 12);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(82, 76);
+            this.testButton.Size = new System.Drawing.Size(82, 34);
             this.testButton.TabIndex = 1;
-            this.testButton.Text = "Тест\r\n";
+            this.testButton.Text = "Cutting без кромки";
             this.testButton.UseVisualStyleBackColor = true;
             // 
             // resultTextBox
             // 
             this.resultTextBox.AcceptsTab = true;
-            this.resultTextBox.Location = new System.Drawing.Point(35, 24);
+            this.resultTextBox.Location = new System.Drawing.Point(35, 52);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(649, 414);
+            this.resultTextBox.Size = new System.Drawing.Size(649, 386);
             this.resultTextBox.TabIndex = 4;
             this.resultTextBox.Text = "";
-            // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(690, 106);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(82, 76);
-            this.clearButton.TabIndex = 5;
-            this.clearButton.Text = "Очистить";
-            this.clearButton.UseVisualStyleBackColor = true;
             // 
             // copyButton
             // 
@@ -70,13 +61,22 @@
             this.copyButton.Text = "Скопировать в буфер";
             this.copyButton.UseVisualStyleBackColor = true;
             // 
+            // edgeButton
+            // 
+            this.edgeButton.Location = new System.Drawing.Point(35, 12);
+            this.edgeButton.Name = "edgeButton";
+            this.edgeButton.Size = new System.Drawing.Size(85, 34);
+            this.edgeButton.TabIndex = 7;
+            this.edgeButton.Text = "Cutting с кромкой";
+            this.edgeButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 450);
+            this.Controls.Add(this.edgeButton);
             this.Controls.Add(this.copyButton);
-            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.testButton);
             this.Name = "MainForm";
@@ -88,8 +88,8 @@
         #endregion
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.RichTextBox resultTextBox;
-        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.Button edgeButton;
     }
 }
 

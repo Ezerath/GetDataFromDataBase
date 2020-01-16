@@ -13,14 +13,25 @@ namespace GetDataFromDataBase
         {
             InitializeComponent();
             details = new List<Detail>();
-            //testButton.Click += TestButton_Click;
-            testButton.Click += ToCuttingShort;
-            clearButton.Click += ClearButton_Click;
-            //copyButton.Click += CopyButton_Click;
+            testButton.Click += ToCuttingShort_Click;
+            edgeButton.Click += EdgeButton_Click;
         }
 
-        private void ToCuttingShort(object sender, EventArgs e)
+        private void EdgeButton_Click(object sender, EventArgs e)
         {
+            ClearData();
+            SetConnection();
+            SumByCount();
+            details.Sort();
+            foreach (var item in details)
+            {
+                resultTextBox.Text += item.ShowToCuttingWithEdge() + "\n";
+            }
+        }
+
+        private void ToCuttingShort_Click(object sender, EventArgs e)
+        {
+            ClearData();
             SetConnection();
             SumByCount();
             details.Sort();
@@ -35,7 +46,7 @@ namespace GetDataFromDataBase
             //Clipboard.SetText(resultTextBox.Text,TextDataFormat.Text);
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearData()
         {
             details.Clear();
             count = 1;
