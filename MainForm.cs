@@ -8,6 +8,7 @@ namespace GetDataFromDataBase
     public partial class MainForm : Form
     {
         List<Detail> details;
+        AddMaterialForm addMaterialForm = new AddMaterialForm();
         int count = 1;
         public MainForm()
         {
@@ -15,6 +16,7 @@ namespace GetDataFromDataBase
             details = new List<Detail>();
             testButton.Click += ToCuttingShort_Click;
             edgeButton.Click += EdgeButton_Click;
+            addMaterialButton.Click += AddMaterialButton_Click;
         }
 
         private void EdgeButton_Click(object sender, EventArgs e)
@@ -37,13 +39,16 @@ namespace GetDataFromDataBase
             details.Sort();
             foreach (var item in details)
             {
-                resultTextBox.Text += item.ShowCuttingShort()+"\n";
+                resultTextBox.Text += item.ShowCuttingShort() + "\n";
             }
         }
 
-        private void CopyButton_Click(object sender, EventArgs e)
+        private void AddMaterialButton_Click(object sender, EventArgs e)
         {
-            //Clipboard.SetText(resultTextBox.Text,TextDataFormat.Text);
+            if (addMaterialForm.Visible == false)
+            {
+                addMaterialForm.Show();
+            }
         }
 
         private void ClearData()

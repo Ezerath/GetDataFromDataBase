@@ -30,7 +30,7 @@
         {
             this.testButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
-            this.copyButton = new System.Windows.Forms.Button();
+            this.addMaterialButton = new System.Windows.Forms.Button();
             this.edgeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -52,14 +52,14 @@
             this.resultTextBox.TabIndex = 4;
             this.resultTextBox.Text = "";
             // 
-            // copyButton
+            // addMaterialButton
             // 
-            this.copyButton.Location = new System.Drawing.Point(690, 188);
-            this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(82, 76);
-            this.copyButton.TabIndex = 6;
-            this.copyButton.Text = "Скопировать в буфер";
-            this.copyButton.UseVisualStyleBackColor = true;
+            this.addMaterialButton.Location = new System.Drawing.Point(602, 12);
+            this.addMaterialButton.Name = "addMaterialButton";
+            this.addMaterialButton.Size = new System.Drawing.Size(82, 34);
+            this.addMaterialButton.TabIndex = 6;
+            this.addMaterialButton.Text = "Добавить материал";
+            this.addMaterialButton.UseVisualStyleBackColor = true;
             // 
             // edgeButton
             // 
@@ -76,7 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 450);
             this.Controls.Add(this.edgeButton);
-            this.Controls.Add(this.copyButton);
+            this.Controls.Add(this.addMaterialButton);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.testButton);
             this.Name = "MainForm";
@@ -88,7 +88,7 @@
         #endregion
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.RichTextBox resultTextBox;
-        private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.Button addMaterialButton;
         private System.Windows.Forms.Button edgeButton;
     }
 }
