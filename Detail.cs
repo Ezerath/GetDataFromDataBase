@@ -180,6 +180,8 @@ namespace GetDataFromDataBase
                     return "Серый" + '•' + "кубанит";
                 case "1629":
                     return "Дуб" + '•' + "гладстоун";
+                case "1631":
+                    return "Egger" + '•' + "белая" + '•' + "древесина";
                 case "1618":
                     return "Alvic" + '•' + "syncron";
                 case "1617":
