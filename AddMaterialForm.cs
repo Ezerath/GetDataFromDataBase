@@ -37,8 +37,12 @@ namespace GetDataFromDataBase
         {
             var dataSet = new DataSet();
             dataSet.ReadXml("ListOfMaterials.xml");
-            materialGridView.DataSource = dataSet;
-            materialGridView.DataMember = "materials";
+            foreach (DataRow item in dataSet.Tables["materials"].Rows)
+            {
+                int n = materialGridView.Rows.Add();
+                materialGridView.Rows[n].Cells[0].Value = item["name"];
+                materialGridView.Rows[n].Cells[1].Value = item["number"];
+            }
         }
     }
 }
