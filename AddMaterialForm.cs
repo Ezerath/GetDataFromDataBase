@@ -18,7 +18,6 @@ namespace GetDataFromDataBase
         {
             InitializeComponent();
             this.FormClosing += AddMaterialForm_FormClosing;
-            Material material = new Material("name", "number");
             AddMaterial();
             FillDataGrid();
         }

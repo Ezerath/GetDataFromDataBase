@@ -11,12 +11,16 @@ namespace GetDataFromDataBase
     /// </summary>
     public class Material
     {
-        string name;
-        string number;
+        public string Name { get; private set; }
+        public string Number { get; }
         public Material(string name, string number)
         {
-            this.name = name;
-            this.number = number;
+            SetName(name);
+            Number = number;
+        }
+        private void SetName(string name)
+        {
+            Name = name.Replace(' ', '•');
         }
     }
 }
