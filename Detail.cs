@@ -273,5 +273,35 @@ namespace GetDataFromDataBase
         {
             return Material.CompareTo(det.Material);
         }
+        private void GetMaterialFromDB(string material)
+        {
+            List<Material> materials = new List<Material>();
+            string adressDB = @"Provider=Microsoft.Jet.OLEDB.4.0;
+                               Data Source=C:\Program Files (x86)\GeoS\K3-Мебель-ПКМ\Data\PKM\tmguidesV6.mdb";
+            OleDbConnection connection = new OleDbConnection(adressDB);
+            using (connection)
+            {
+                connection.OpenAsync();
+                string query = "SELECT PriceID, MName FROM TPrice WHERE MatID IN (SELECT MatID FROM TMat WHERE MatName LIKE 'ДСП%')";// номер MatID берется в типах материалов в базе к-3
+
+                OleDbCommand command = new OleDbCommand(query, connection);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string number = reader[0].ToString();
+                    string name = reader[1].ToString();
+                    materials.Add(new Material(name, number));
+                }
+                connection.Close();
+                command.Dispose();
+            }
+            foreach (var item in materials)
+            {
+                if (item.Number == material)
+                {
+                    Material = item.Name;
+                }
+            }
+        }
     }
 }
