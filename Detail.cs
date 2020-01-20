@@ -281,7 +281,7 @@ namespace GetDataFromDataBase
             using (connection)
             {
                 connection.OpenAsync();
-                string query = "SELECT PriceID, MName FROM TPrice WHERE MatID IN (SELECT MatID FROM TMat WHERE MatName LIKE 'ДСП%')";// номер MatID берется в типах материалов в базе к-3
+                string query = "SELECT PriceID, MName FROM TPrice WHERE MatID IN (SELECT MatID FROM TMat WHERE MatName LIKE 'ДСП%' OR MatName LIKE 'AGT%' OR MatName LIKE 'Alvic%' OR MatName LIKE 'ДВП%')";// номер MatID берется в типах материалов в базе к-3
 
                 OleDbCommand command = new OleDbCommand(query, connection);
                 OleDbDataReader reader = command.ExecuteReader();

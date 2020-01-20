@@ -8,7 +8,7 @@ namespace GetDataFromDataBase
     public partial class MainForm : Form
     {
         List<Detail> details;
-        AddMaterialForm addMaterialForm = new AddMaterialForm();
+        //AddMaterialForm addMaterialForm = new AddMaterialForm();
         int count = 1;
         public MainForm()
         {
@@ -16,7 +16,6 @@ namespace GetDataFromDataBase
             details = new List<Detail>();
             testButton.Click += ToCuttingShort_Click;
             edgeButton.Click += EdgeButton_Click;
-            addMaterialButton.Click += AddMaterialButton_Click;
         }
 
         private void EdgeButton_Click(object sender, EventArgs e)
@@ -45,10 +44,10 @@ namespace GetDataFromDataBase
 
         private void AddMaterialButton_Click(object sender, EventArgs e)
         {
-            if (addMaterialForm.Visible == false)
-            {
-                addMaterialForm.Show();
-            }
+            //if (addMaterialForm.Visible == false)
+            //{
+            //    addMaterialForm.Show();
+            //}
         }
 
         private void ClearData()

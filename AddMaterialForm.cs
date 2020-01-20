@@ -17,7 +17,7 @@ namespace GetDataFromDataBase
         public AddMaterialForm()
         {
             InitializeComponent();
-            this.FormClosing += AddMaterialForm_FormClosing;
+            FormClosing += AddMaterialForm_FormClosing;
             AddMaterial();
             FillDataGrid();
         }

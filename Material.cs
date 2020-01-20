@@ -20,7 +20,10 @@ namespace GetDataFromDataBase
         }
         private void SetName(string name)
         {
-            Name = name.Replace(' ', '•');
+            string temp = name.Replace(' ', '•').ToLower();
+            StringBuilder nameSB = new StringBuilder(temp);
+            nameSB[0] = char.ToUpper(nameSB[0]);
+            Name = nameSB.ToString();
         }
     }
 }
