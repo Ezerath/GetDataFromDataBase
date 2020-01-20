@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.OleDb;
 
 namespace GetDataFromDataBase
 {
@@ -7,7 +9,7 @@ namespace GetDataFromDataBase
         string Name { get; set; }//имя детали
         string Length;//длина детали
         string Width;// ширина детали
-        public string Material { get; set; }// материал детали
+        string Material = "NoMaterial";// материал детали
         // типы кромок по сторонам детали
         string EdgeB = string.Empty;
         string EdgeC = string.Empty;
@@ -22,10 +24,11 @@ namespace GetDataFromDataBase
         public int Count { get; private set; }
         public Detail(string name, string length, string width, string material, string edgeB, string edgeC, string edgeD, string edgeE)
         {
+            GetMaterialFromDB(material);
             SetName(name);
             Length = length;
             Width = width;
-            Material = SetMaterialShort(material);
+            //Material = SetMaterialShort(material);
             SetEdges(edgeB, edgeC, edgeD, edgeE);
             Count = 1;
         }
@@ -239,7 +242,7 @@ namespace GetDataFromDataBase
             string c = "0";
             string d = "0";
             string e = "0";
-            if (EdgeB != string.Empty)            
+            if (EdgeB != string.Empty)
                 b = "1";
             if (EdgeC != string.Empty)
                 c = "1";
@@ -254,10 +257,6 @@ namespace GetDataFromDataBase
             return Name == obj.Name && Length == obj.Length && Width == obj.Width && Material == obj.Material &&
                 EdgeB == obj.EdgeB && EdgeC == obj.EdgeC && EdgeD == obj.EdgeD && EdgeE == obj.EdgeE;
         }
-        //&&
-        //        EdgeBcolor == obj.EdgeBcolor && EdgeCcolor == obj.EdgeCcolor &&
-        //        EdgeDcolor == obj.EdgeDcolor && EdgeEcolor == obj.EdgeEcolor;
-        //}
         public override bool Equals(object obj)
         {
             if (!(obj is Detail))
