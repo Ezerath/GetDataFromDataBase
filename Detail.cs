@@ -242,6 +242,9 @@ namespace GetDataFromDataBase
             string c = "0";
             string d = "0";
             string e = "0";
+            string rotation = "0";
+            if (Material.Contains("Двп"))
+                rotation = "1";
             if (EdgeB != string.Empty)
                 b = "1";
             if (EdgeC != string.Empty)
@@ -250,7 +253,7 @@ namespace GetDataFromDataBase
                 d = "1";
             if (EdgeE != string.Empty)
                 e = "1";
-            return $"{Length} {Width} {Count} {Name} {Material} 0 2 {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {c} {b} {d} {e}";
+            return $"{Length} {Width} {Count} {Name} {Material} {rotation} 2 {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {c} {b} {d} {e}";
         }
         private bool Equals(Detail obj)
         {
