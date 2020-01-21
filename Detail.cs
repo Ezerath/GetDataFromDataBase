@@ -243,15 +243,15 @@ namespace GetDataFromDataBase
             string d = "0";
             string e = "0";
             string rotation = "0";
-            if (Material.Contains("Двп"))
+            if (Material.Contains("Двп") || Name.Contains("ящик"))
                 rotation = "1";
-            if (EdgeB != string.Empty)
+            if (EdgeB != string.Empty && !Name.Contains("ящик"))
                 b = "1";
-            if (EdgeC != string.Empty)
+            if (EdgeC != string.Empty && !Name.Contains("ящик"))
                 c = "1";
-            if (EdgeD != string.Empty)
+            if (EdgeD != string.Empty && !Name.Contains("ящик"))
                 d = "1";
-            if (EdgeE != string.Empty)
+            if (EdgeE != string.Empty && !Name.Contains("ящик"))
                 e = "1";
             return $"{Length} {Width} {Count} {Name} {Material} {rotation} 2 {EdgeCcolor} {EdgeBcolor} {EdgeDcolor} {EdgeEcolor} {c} {b} {d} {e}";
         }
