@@ -17,6 +17,17 @@ namespace GetDataFromDataBase
             testButton.Click += ToCuttingShort_Click;
             edgeButton.Click += EdgeButton_Click;
         }
+        private void Cut3Button_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            SetConnection();
+            SumByCount();
+            details.Sort();
+            foreach (var item in details)
+            {
+                resultTextBox.Text += item.ShowCutting3() + "\n";
+            }
+        }
 
         private void EdgeButton_Click(object sender, EventArgs e)
         {
@@ -128,5 +139,7 @@ namespace GetDataFromDataBase
                 details.Add(new Detail(name, length, width, material, edgeB, edgeC, edgeD, edgeE));
             }
         }
+
+
     }
 }

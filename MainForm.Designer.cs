@@ -32,6 +32,7 @@
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
             this.addMaterialButton = new System.Windows.Forms.Button();
             this.edgeButton = new System.Windows.Forms.Button();
+            this.Cut3Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testButton
@@ -48,7 +49,8 @@
             this.resultTextBox.AcceptsTab = true;
             this.resultTextBox.Location = new System.Drawing.Point(35, 52);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(649, 386);
+            this.resultTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.resultTextBox.Size = new System.Drawing.Size(963, 386);
             this.resultTextBox.TabIndex = 4;
             this.resultTextBox.Text = "";
             // 
@@ -70,11 +72,22 @@
             this.edgeButton.Text = "Cutting с кромкой";
             this.edgeButton.UseVisualStyleBackColor = true;
             // 
+            // Cut3Button
+            // 
+            this.Cut3Button.Location = new System.Drawing.Point(214, 12);
+            this.Cut3Button.Name = "Cut3Button";
+            this.Cut3Button.Size = new System.Drawing.Size(82, 34);
+            this.Cut3Button.TabIndex = 8;
+            this.Cut3Button.Text = "Cutting 3";
+            this.Cut3Button.UseVisualStyleBackColor = true;
+            this.Cut3Button.Click += new System.EventHandler(this.Cut3Button_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 450);
+            this.ClientSize = new System.Drawing.Size(1010, 450);
+            this.Controls.Add(this.Cut3Button);
             this.Controls.Add(this.edgeButton);
             this.Controls.Add(this.addMaterialButton);
             this.Controls.Add(this.resultTextBox);
@@ -90,6 +103,7 @@
         private System.Windows.Forms.RichTextBox resultTextBox;
         private System.Windows.Forms.Button addMaterialButton;
         private System.Windows.Forms.Button edgeButton;
+        private System.Windows.Forms.Button Cut3Button;
     }
 }
 

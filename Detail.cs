@@ -7,13 +7,27 @@ namespace GetDataFromDataBase
     public class Detail : IComparable<Detail>
     {
         string Name { get; set; }//имя детали
+        string NameCut3 { get; set; }
         string Length;//длина детали
         string Width;// ширина детали
         string Material = "NoMaterial";// материал детали
+        string MaterialCut3;
         // типы кромок по сторонам детали
+        /// <summary>
+        /// тип кромки по стороне B
+        /// </summary>
         string EdgeB = string.Empty;
+        /// <summary>
+        /// тип кромки по стороне C
+        /// </summary>
         string EdgeC = string.Empty;
+        /// <summary>
+        /// тип кромки по стороне D
+        /// </summary>
         string EdgeD = string.Empty;
+        /// <summary>
+        /// тип кромки по стороне E
+        /// </summary>
         string EdgeE = string.Empty;
         //цвет кромки по сторонам
         string EdgeBcolor = "0";
@@ -26,11 +40,24 @@ namespace GetDataFromDataBase
         {
             GetMaterialFromDB(material);
             SetName(name);
+            NameCut3 = name;
             Length = length;
             Width = width;
-            //Material = SetMaterialShort(material);
             SetEdges(edgeB, edgeC, edgeD, edgeE);
+            FixLength();
             Count = 1;
+        }
+
+        private void FixLength()
+        {
+            if(EdgeB== "2мм" && EdgeC== "2мм")
+            {
+                Length = (int.Parse(Length) + 1).ToString();
+            }
+            if (EdgeD == "2мм" && EdgeE == "2мм")
+            {
+                Width = (int.Parse(Width) + 1).ToString();
+            }
         }
 
         private void SetName(string name)
@@ -231,6 +258,31 @@ namespace GetDataFromDataBase
         {
             return $"{Length} {Width} {Count} {Name} {Material} 1";
         }
+        public string ShowCutting3()
+        {
+           
+            string b = "False";
+            if (EdgeB != "")
+            {
+                b = "True";
+            }
+            string c = "False";
+            if (EdgeC != "")
+            {
+                c = "True";
+            }
+            string d = "False";
+            if (EdgeD != "")
+            {
+                d = "True";
+            }
+            string e = "False";
+            if (EdgeE != "")
+            {
+                e = "True";
+            }
+            return $"{MaterialCut3}\t{Length}\t{Width}\t{Count}\t1\t{""}\t{c}\t{d}\t{b}\t{e}\tFalse\t\t{NameCut3}\tD\t{(EdgeC==""? "-" : EdgeC)}\t{(EdgeD == "" ? "-" : EdgeD)}\t{(EdgeB == "" ? "-" : EdgeB)}\t{(EdgeE == "" ? "-" : EdgeE)}";
+        }
         public string ShowToCuttingWithEdge()
         {
             // возврат строки в формате для cutting 
@@ -243,7 +295,7 @@ namespace GetDataFromDataBase
             string d = "0";
             string e = "0";
             string rotation = "0";
-            if (Material.Contains("Двп") || Name.Contains("ящик"))
+            if (Material.Contains("Двп") || Name.Contains("ящик") || EdgeB == EdgeC && EdgeB == EdgeD && EdgeB == EdgeE)
                 rotation = "1";
             if (EdgeB != string.Empty && !Name.Contains("ящик"))
                 b = "1";
@@ -284,7 +336,7 @@ namespace GetDataFromDataBase
             using (connection)
             {
                 connection.OpenAsync();
-                string query = "SELECT PriceID, MName FROM TPrice WHERE MatID IN (SELECT MatID FROM TMat WHERE MatName LIKE 'ДСП%' OR MatName LIKE 'AGT%' OR MatName LIKE 'Alvic%' OR MatName LIKE 'ДВП%')";// номер MatID берется в типах материалов в базе к-3
+                string query = "SELECT PriceID, MName FROM TPrice WHERE MatID IN (SELECT MatID FROM TMat WHERE MatName LIKE 'ДСП%' OR MatName LIKE 'AGT%' OR MatName LIKE 'Alvic%' OR MatName LIKE 'ДВП%' OR MatName LIKE 'Smart%' OR MatName LIKE 'EvoGloss%')";// номер MatID берется в типах материалов в базе к-3
 
                 OleDbCommand command = new OleDbCommand(query, connection);
                 OleDbDataReader reader = command.ExecuteReader();
@@ -301,7 +353,8 @@ namespace GetDataFromDataBase
             {
                 if (item.Number == material)
                 {
-                    Material = item.Name;
+                    Material = item.NameCut2;
+                    MaterialCut3 = item.NameCut3;
                 }
             }
         }
